@@ -22,8 +22,23 @@ $sql = "SELECT * FROM pokemon";
     <meta charset="UTF-8">
     <title>Pokémons Encontrados</title>
     <link rel="stylesheet" href="../css/style-inform.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
 </head>
 <body class="body-inform">
+      <!-- Botão hambúrguer -->
+  <div class="hamburguer" onclick="toggleMenu()">
+    &#9776; <!-- Ícone de menu hambúrguer -->
+  </div>
+
+  <!-- Menu lateral -->
+  <nav class="menu-lateral" id="menuLateral">
+    <h2>PokéMenu</h2>
+    <ul>
+      <li><a href="../index.php">Cadastrar Pokémon</a></li>
+      <li><a href="informacoes-pokemon.php">Lista dos Pokémons</a></li>
+    </ul>
+  </nav>
     <div class="container">
         <h1>Pokémons Encontrados</h1>
 
