@@ -52,34 +52,36 @@ $pokemon = $resultado->fetch_assoc();
     <title>Editar Pokémon</title>
 </head>
 <body>
-    <h1>Editar Pokémon</h1>
-    <form method="POST">
-        <label>Nome:</label>
-        <input type="text" name="nome" value="<?= htmlspecialchars($pokemon['nome_pokemon']) ?>"><br>
-
-        <label>Tipo:</label>
-        <input type="text" name="tipo" value="<?= htmlspecialchars($pokemon['tipo_pokemon']) ?>"><br>
-
-        <label>Localização:</label>
-        <input type="text" name="localizacao" value="<?= htmlspecialchars($pokemon['localizacao_pokemon']) ?>"><br>
-
-        <label>Data:</label>
-        <input type="date" name="data" value="<?= htmlspecialchars($pokemon['data_registro_pokemon']) ?>"><br>
-
-        <label>HP:</label>
-        <input type="number" name="hp" value="<?= $pokemon['hp_pokemon'] ?>"><br>
-
-        <label>Ataque:</label>
-        <input type="number" name="ataque" value="<?= $pokemon['ataque_pokemon'] ?>"><br>
-
-        <label>Defesa:</label>
-        <input type="number" name="defesa" value="<?= $pokemon['defesa_pokemon'] ?>"><br>
-
-        <label>Observação:</label>
-        <textarea name="observacao"><?= htmlspecialchars($pokemon['observacao_pokemon']) ?></textarea><br>
-
-        <button type="submit">Salvar Alterações</button>
-    </form>
+    <div class="conteudo-principal">
+        <form method="POST">
+            <h1>Editar Pokémon</h1>
+            <label>Nome:</label>
+            <input type="text" name="nome" value="<?= htmlspecialchars($pokemon['nome_pokemon']) ?>"><br>
+            
+            <label>Tipo:</label>
+            <input type="text" name="tipo" value="<?= htmlspecialchars($pokemon['tipo_pokemon']) ?>"><br>
+            
+            <label>Localização:</label>
+            <input type="text" name="localizacao" value="<?= htmlspecialchars($pokemon['localizacao_pokemon']) ?>"><br>
+            
+            <label>Data:</label>
+            <input type="date" name="data" value="<?= htmlspecialchars($pokemon['data_registro_pokemon']) ?>"><br>
+            
+            <label>HP:</label>
+            <input type="number" name="hp" value="<?= $pokemon['hp_pokemon'] ?>"><br>
+            
+            <label>Ataque:</label>
+            <input type="number" name="ataque" value="<?= $pokemon['ataque_pokemon'] ?>"><br>
+            
+            <label>Defesa:</label>
+            <input type="number" name="defesa" value="<?= $pokemon['defesa_pokemon'] ?>"><br>
+            
+            <label>Observação:</label>
+            <textarea name="observacao"><?= htmlspecialchars($pokemon['observacao_pokemon']) ?></textarea><br>
+            
+            <button type="submit">Salvar Alterações</button>
+        </form>
+    </div>
 </body>
 </html>
 
