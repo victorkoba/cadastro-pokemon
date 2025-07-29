@@ -21,10 +21,8 @@ include './php/conexao.php'
   <nav class="menu-lateral" id="menuLateral">
     <h2>PokéMenu</h2>
     <ul>
-      <li><a href="index.php">Cadastrar</a></li>
-      <li><a href="visualizar.php">Visualizar</a></li>
-      <li><a href="editar.php">Editar</a></li>
-      <li><a href="excluir.php">Excluir</a></li>
+      <li><a href="index.php">Cadastrar Pokémon</a></li>
+      <li><a href="./php/informacoes-pokemon.php">Lista dos Pokémons</a></li>
     </ul>
   </nav>
 
