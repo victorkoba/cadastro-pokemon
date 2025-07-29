@@ -4,68 +4,111 @@ include './php/conexao.php';
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Pokemon</title>
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // Define o valor máximo como a data de hoje
+        const dataInput = document.getElementById('data_registro');
+        const hoje = new Date().toISOString().split('T')[0];
+        dataInput.max = hoje;
+    </script>
 </head>
+
 <body class="body-cadastro">
-  <!-- Botão hambúrguer -->
-  <div class="hamburguer" onclick="toggleMenu()">
-    &#9776; <!-- Ícone de menu hambúrguer -->
-  </div>
+    <!-- Botão hambúrguer -->
+    <div class="hamburguer" onclick="toggleMenu()">
+        &#9776; <!-- Ícone de menu hambúrguer -->
+    </div>
 
-  <!-- Menu lateral -->
-  <nav class="menu-lateral" id="menuLateral">
-    <h2>PokéMenu</h2>
-    <ul>
-      <li><a href="index.php">Cadastrar Pokémon</a></li>
-      <li><a href="./php/informacoes-pokemon.php">Lista dos Pokémons</a></li>
-    </ul>
-  </nav>
+    <!-- Menu lateral -->
+    <nav class="menu-lateral" id="menuLateral">
+        <h2>PokéMenu</h2>
+        <ul>
+            <li><a href="index.php">Cadastrar Pokémon</a></li>
+            <li><a href="./php/informacoes-pokemon.php">Lista dos Pokémons</a></li>
+        </ul>
+    </nav>
 
-  <!-- Conteúdo principal -->
-  <div class="conteudo-principal">
-      
-      <form action="" method="POST" class="form-pokemon">
-        <h1 class="titulo-cadastro">Cadastro de Pokémons</h1>
-      <label for="nome">Nome:</label>
-      <input required type="text" name="nome" id="nome" placeholder="Nome do Pokémon">
+    <!-- Conteúdo principal -->
+    <div class="conteudo-principal">
 
-      <label for="tipo">Tipo:</label>
-      <select name="tipo" id="tipo" required>
-        <option value="">Selecione...</option>
-        <option value="Fogo">Fogo</option>
-        <option value="Água">Água</option>
-        <option value="Planta">Planta</option>
-        <option value="Elétrico">Elétrico</option>
-        <option value="Pedra">Pedra</option>
-      </select>
+        <form id="formPokemon" action="" method="POST" class="form-pokemon">
+            <h1 class="titulo-cadastro">Cadastro de Pokémons</h1>
+            <label for="nome">Nome:</label>
+            <input required type="text" name="nome" id="nome" placeholder="Nome do Pokémon">
 
-      <label for="localizacao">Localização Encontrada:</label>
-      <input type="text" name="localizacao" id="localizacao" placeholder="Rua, Bairro..." required>
+            <label for="tipo">Tipo:</label>
+            <select name="tipo" id="tipo" required>
+                <option value="">Selecione...</option>
+                <option value="Fogo">Fogo</option>
+                <option value="Água">Água</option>
+                <option value="Planta">Planta</option>
+                <option value="Elétrico">Elétrico</option>
+                <option value="Pedra">Pedra</option>
+            </select>
 
-      <label for="data_registro">Data do Registro:</label>
-      <input type="date" name="data_registro" id="data_registro" required>
+            <label for="localizacao">Localização Encontrada:</label>
+            <input type="text" name="localizacao" id="localizacao" placeholder="Rua, Bairro..." required>
 
-      <label for="hp">HP:</label>
-      <input type="number" name="hp" id="hp" min="0" placeholder="Quanto de vida o Pokémon possui?" required>
+            <label for="data_registro">Data do Registro:</label>
+            <input type="date" name="data_registro" id="data_registro" required max="<?= date('Y-m-d') ?>">
 
-      <label for="ataque">Ataque:</label>
-      <input type="text" name="ataque" id="ataque" placeholder="Quanto de ataque o Pokémon possui?" required>
+            <label for="hp">HP:</label>
+            <input type="number" name="hp" id="hp" min="0" placeholder="Quanto de vida o Pokémon possui?" required>
 
-      <label for="defesa">Defesa:</label>
-      <input type="text" name="defesa" id="defesa" placeholder="Quanto de defesa o Pokémon possui?" required>
+            <label for="ataque">Ataque:</label>
+            <input type="text" name="ataque" id="ataque" placeholder="Quanto de ataque o Pokémon possui?" required>
 
-      <label for="observacoes">Observações:</label>
-      <textarea name="observacoes" id="observacoes" rows="4" placeholder="Comportamento, condição, etc."></textarea>
+            <label for="defesa">Defesa:</label>
+            <input type="text" name="defesa" id="defesa" placeholder="Quanto de defesa o Pokémon possui?" required>
 
-      <button type="submit">Registrar Pokémon</button>
-    </form>
-  </div>
+            <label for="observacoes">Observações:</label>
+            <textarea name="observacoes" id="observacoes" rows="4"
+                placeholder="Comportamento, condição, etc."></textarea>
+
+            <button type="submit">Registrar Pokémon</button>
+        </form>
+    </div>
+    <script>
+  const form = document.getElementById('formPokemon');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); // Impede o envio automático
+
+    Swal.fire({
+      title: "Deseja salvar este Pokémon?",
+      text: "Os dados serão registrados no banco de dados.",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Sim, salvar",
+      cancelButtonText: "Cancelar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        form.submit(); // Envia o formulário manualmente
+      }
+    });
+  });
+</script>
+<script>
+  // Mostra o SweetAlert se o cadastro foi bem-sucedido
+  if (localStorage.getItem('cadastro_sucesso')) {
+    Swal.fire({
+      icon: 'success',
+      title: 'Sucesso!',
+      text: 'Pokémon cadastrado com sucesso!',
+    });
+    localStorage.removeItem('cadastro_sucesso'); // Limpa o sinal
+  }
+</script>
+
 </body>
+
 </html>
 
 <?php
@@ -92,12 +135,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Vincular os parâmetros (todos como string exceto hp que é inteiro)
     $stmt->bind_param("ssssisss", $nome, $tipo, $localizacao, $data, $hp, $ataque, $defesa, $observacoes);
 
-    // Executar e verificar
     if ($stmt->execute()) {
-        echo "Pokémon registrado com sucesso!";
-    } else {
-        echo "Erro ao registrar: " . $stmt->error;
-    }
+    echo "<script>
+        localStorage.setItem('cadastro_sucesso', '1');
+        window.location.href = 'index.php';
+    </script>";
+    exit;
+}
 
     // Fechar
     $stmt->close();
