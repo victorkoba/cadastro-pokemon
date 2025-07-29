@@ -14,7 +14,7 @@ include './php/conexao.php'
 <body class="body-cadastro">
   <!-- Botão hambúrguer -->
   <div class="hamburguer" onclick="toggleMenu()">
-    &#9776;
+    &#9776; <!-- Ícone de menu hambúrguer -->
   </div>
 
   <!-- Menu lateral -->
@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $observacoes = $_POST['observacoes'];
 
     // Criar a query com prepared statement
-    $stmt = $conn->prepare("INSERT INTO pokemons (nome, tipo, localizacao, data_registro, hp, ataque, defesa, observacoes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conexao->prepare("INSERT INTO pokemons (nome, tipo, localizacao, data_registro, hp, ataque, defesa, observacoes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
     // Verificar se a preparação falhou
     if (!$stmt) {
