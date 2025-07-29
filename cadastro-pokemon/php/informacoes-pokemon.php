@@ -75,7 +75,7 @@ $sql = "SELECT * FROM pokemon";
             <td><?= htmlspecialchars($row['observacao_pokemon']) ?></td>
             <td>
     <a href="editar.php?id=<?= $row['id_pokemon'] ?>" class="edit">Editar</a>
-    <a href="excluir.php?id=<?= $row['id_pokemon'] ?>" class="delete" onclick="return confirm('Tem certeza que deseja excluir este Pokémon?')">Excluir</a>
+    <button onclick="confirmarExclusao(<?= $row['id_pokemon'] ?>)" class="btn-excluir">Excluir</button>
 </td>
 
         </tr>
@@ -87,6 +87,39 @@ $sql = "SELECT * FROM pokemon";
             <p>Nenhum Pokémon encontrado.</p>
         <?php endif; ?>
     </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  function confirmarExclusao(id) {
+    Swal.fire({
+      title: 'Tem certeza?',
+      text: "Você deseja excluir este Pokémon?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Sim, excluir',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Salva no localStorage e redireciona
+        window.location.href = `excluir.php?id=${id}`;
+      }
+    });
+  }
+
+  // SweetAlert pós-exclusão (verifica localStorage)
+  if (localStorage.getItem('pokemon_excluido')) {
+    Swal.fire({
+      icon: 'success',
+      title: 'Excluído!',
+      text: 'O Pokémon foi removido com sucesso.'
+    });
+    localStorage.removeItem('pokemon_excluido');
+  }
+</script>
+
+
 </body>
 </html>
 
