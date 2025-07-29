@@ -4,7 +4,7 @@ include 'conexao.php';
 $termo = "";
 if (isset($_GET['pesquisa'])) {
     $termo = $_GET['pesquisa'];
-    $sql = "SELECT * FROM registro_pokemons WHERE nome_pokemon LIKE ?";
+    $sql = "SELECT * FROM pokemon WHERE nome_pokemon LIKE ?";
     $stmt = $conexao->prepare($sql);
     $busca = "%$termo%";
     $stmt->bind_param("s", $busca);
@@ -21,7 +21,7 @@ $sql = "SELECT * FROM pokemon";
 <head>
     <meta charset="UTF-8">
     <title>Pokémons Encontrados</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style-inform.css">
 </head>
 <body class="body-inform">
     <div class="container">
