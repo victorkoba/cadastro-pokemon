@@ -94,3 +94,32 @@ p {
   margin-top: 20px;
   color: #fff;
 }
+
+a {
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
+
+a.edit {
+  background-color: #3b82f6; 
+  color: white;
+}
+
+a.edit:hover {
+  background-color: #2563eb; 
+}
+
+a.delete {
+  background-color: #ef4444;
+  color: white;
+  margin-left: 8px;
+}
+
+a.delete:hover {
+  background-color: #b91c1c; 
+}
