@@ -1,5 +1,5 @@
 <?php
-include './php/conexao.php'
+include './php/conexao.php';
 ?>
 
 <!DOCTYPE html>
@@ -28,9 +28,9 @@ include './php/conexao.php'
 
   <!-- Conteúdo principal -->
   <div class="conteudo-principal">
-    <h1 class="titulo-cadastro">Cadastro de Pokémons</h1>
-
-    <form action="" method="POST" class="form-pokemon">
+      
+      <form action="" method="POST" class="form-pokemon">
+        <h1 class="titulo-cadastro">Cadastro de Pokémons</h1>
       <label for="nome">Nome:</label>
       <input required type="text" name="nome" id="nome" placeholder="Nome do Pokémon">
 

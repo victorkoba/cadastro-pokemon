@@ -1,3 +1,4 @@
+/* Reset global */
 * {
   margin: 0;
   padding: 0;
@@ -5,6 +6,7 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
+/* Corpo com fundo e posição relativa */
 .body-cadastro {
   height: 100vh;
   background: url('../img/fundo_pokemon.png') no-repeat center center fixed;
@@ -12,86 +14,78 @@
   position: relative;
 }
 
+/* Conteúdo centralizado */
 .conteudo-principal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 800px;
+    margin-top: 100px;
   padding: 20px;
   text-align: center;
 }
 
-
-/* Menu lateral */
-
+/* Botão hamburguer */
 .hamburguer {
   position: fixed;
   top: 20px;
   left: 20px;
   font-size: 30px;
-  color: black;
+  color: white;
   cursor: pointer;
-  z-index: 9999;
-  background-color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  z-index: 10000;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
+/* Menu lateral */
 .menu-lateral {
   position: fixed;
   top: 0;
-  left: -220px;
-  width: 200px;
+  left: -240px;
+  width: 220px;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: #2c5490;
   color: #fff;
   padding: 30px 20px;
   transition: left 0.3s ease;
   z-index: 999;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  gap: 20px;
+  gap: 30px;
 }
 
 .menu-lateral.ativo {
-  left: 0; /* quando ativado, aparece */
+  left: 0;
 }
 
-
+/* Título do menu */
 .menu-lateral h2 {
-  margin: 0;
-  font-size: 22px;
+    margin-left: 65px;
+  font-size: 24px;
   text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ffffff33;
 }
 
+/* Lista de navegação */
 .menu-lateral ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  margin-left: 20px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
 .menu-lateral ul li a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  transition: 0.2s;
 }
 
 .menu-lateral ul li a:hover {
-  text-decoration: underline;
-}
-
-
-/* Título fora do formulário */
-.titulo-cadastro {
-  color: #fff;
-  font-size: 32px;
-  margin-bottom: 30px;
+    transition: 0.3 ease-in;
+  color: #5479ff;
 }
 
 /* Formulário com glassmorphism */
@@ -99,13 +93,16 @@
   background: rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   padding: 30px;
+  width: 100%;
   max-width: 800px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  margin: 0 auto;
 }
 
-/* Elementos do formulário */
+/* Labels do formulário */
 .form-pokemon label {
   display: block;
   margin-bottom: 5px;
@@ -113,17 +110,19 @@
   color: #fff;
 }
 
+/* Inputs, select e textarea */
 .form-pokemon input,
 .form-pokemon select,
 .form-pokemon textarea {
   width: 100%;
   padding: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   border: none;
   border-radius: 8px;
   outline: none;
 }
 
+/* Botão do formulário */
 .form-pokemon button {
   width: 100%;
   padding: 12px;
@@ -138,4 +137,12 @@
 
 .form-pokemon button:hover {
   background-color: #ffffff55;
+}
+
+.titulo-cadastro {
+    display: flex;
+    justify-content: center;
+  color: #fff; /* branco */
+  font-size: 32px;
+  margin-bottom: 30px;
 }
