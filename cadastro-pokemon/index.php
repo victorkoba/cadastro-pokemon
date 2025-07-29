@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $observacoes = $_POST['observacoes'];
 
     // Criar a query com prepared statement
-    $stmt = $conexao->prepare("INSERT INTO pokemon (nome, tipo, localizacao, data_registro, hp, ataque, defesa, observacoes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conexao->prepare("INSERT INTO pokemon (nome_pokemon, tipo_pokemon, localizacao_pokemon, data_registro_pokemon, hp_pokemon, ataque_pokemon, defesa_pokemon, observacoe_pokemon) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
     // Verificar se a preparação falhou
     if (!$stmt) {
