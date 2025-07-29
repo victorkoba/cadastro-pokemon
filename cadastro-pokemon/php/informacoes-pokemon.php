@@ -5,14 +5,14 @@ $termo = "";
 if (isset($_GET['pesquisa'])) {
     $termo = $_GET['pesquisa'];
     $sql = "SELECT * FROM registro_pokemons WHERE nome_pokemon LIKE ?";
-    $stmt = $conn->prepare($sql);
+    $stmt = $conexao->prepare($sql);
     $busca = "%$termo%";
     $stmt->bind_param("s", $busca);
     $stmt->execute();
     $resultado = $stmt->get_result();
 } else {
-    $sql = "SELECT * FROM registro_pokemons";
-    $resultado = $conn->query($sql);
+$sql = "SELECT * FROM pokemon";
+    $resultado = $conexao->query($sql);
 }
 ?>
 
@@ -23,7 +23,7 @@ if (isset($_GET['pesquisa'])) {
     <title>Pokémons Encontrados</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="body-inform">
     <div class="container">
         <h1>Pokémons Encontrados</h1>
 
@@ -68,4 +68,4 @@ if (isset($_GET['pesquisa'])) {
 </body>
 </html>
 
-<?php $conn->close(); ?>
+<?php $conexao->close(); ?>
