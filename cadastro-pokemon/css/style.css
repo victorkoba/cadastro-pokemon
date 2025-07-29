@@ -5,27 +5,103 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
-.body-cadastro {
+body.body-cadastro {
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background: url('../') no-repeat center center fixed;
+  background: url('../img/fundo_pokemon.png') no-repeat center center fixed;
   background-size: cover;
 }
 
+/* Menu lateral */
+
+.hamburguer {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.menu-lateral {
+  position: fixed;
+  top: 0;
+  left: -220px; /* escondido fora da tela */
+  width: 200px;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 20px;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+
+.menu-lateral.ativo {
+  left: 0;
+}
+
+/* Conteúdo recuado quando o menu abre */
+.conteudo-principal {
+  margin-left: 0;
+  padding: 40px;
+  width: 100%;
+  transition: margin-left 0.3s ease;
+}
+
+.menu-lateral.ativo ~ .conteudo-principal {
+  margin-left: 220px;
+}
+.menu-lateral h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  text-align: center;
+}
+
+.menu-lateral ul {
+  list-style: none;
+}
+
+.menu-lateral ul li {
+  margin-bottom: 15px;
+}
+
+.menu-lateral ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.menu-lateral ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Conteúdo à direita do menu */
+.conteudo-principal {
+  margin-left: 220px;
+  padding: 40px;
+  width: 100%;
+}
+
+/* Título fora do formulário */
+.titulo-cadastro {
+  color: #fff;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+/* Formulário com glassmorphism */
 .form-pokemon {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   padding: 30px;
-  width: 800px;
+  max-width: 800px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
-/* Espaçamento entre elementos do formulário */
+/* Elementos do formulário */
 .form-pokemon label {
   display: block;
   margin-bottom: 5px;

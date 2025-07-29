@@ -9,43 +9,64 @@ include './php/conexao.php'
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Pokemon</title>
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/script.js"></script>
 </head>
 <body class="body-cadastro">
+  <!-- Botão hambúrguer -->
+  <div class="hamburguer" onclick="toggleMenu()">
+    &#9776;
+  </div>
+
+  <!-- Menu lateral -->
+  <nav class="menu-lateral" id="menuLateral">
+    <h2>PokéMenu</h2>
+    <ul>
+      <li><a href="index.php">Cadastrar</a></li>
+      <li><a href="visualizar.php">Visualizar</a></li>
+      <li><a href="editar.php">Editar</a></li>
+      <li><a href="excluir.php">Excluir</a></li>
+    </ul>
+  </nav>
+
+  <!-- Conteúdo principal -->
+  <div class="conteudo-principal">
+    <h1 class="titulo-cadastro">Cadastro de Pokémons</h1>
+
     <form action="" method="POST" class="form-pokemon">
-        <div class="form-pokemon">
-            <label for="nome">Nome:</label>
-            <input required type="text" name="nome" id="nome">
-            <label for="tipo">Tipo:</label>
-            <select name="tipo" id="tipo" required>
-                <option value="">Selecione...</option>
-                <option value="Fogo">Fogo</option>
-                <option value="Água">Água</option>
-                <option value="Planta">Planta</option>
-                <option value="Elétrico">Elétrico</option>
-                <option value="Pedra">Pedra</option>
-            </select>
+      <label for="nome">Nome:</label>
+      <input required type="text" name="nome" id="nome" placeholder="Nome do Pokémon">
 
-        <label for="localizacao">Localização Encontrada:</label>
-        <input type="text" name="localizacao" id="localizacao" placeholder="Rua, Bairro..." required>
+      <label for="tipo">Tipo:</label>
+      <select name="tipo" id="tipo" required>
+        <option value="">Selecione...</option>
+        <option value="Fogo">Fogo</option>
+        <option value="Água">Água</option>
+        <option value="Planta">Planta</option>
+        <option value="Elétrico">Elétrico</option>
+        <option value="Pedra">Pedra</option>
+      </select>
 
-        <label for="data_registro">Data do Registro:</label>
-        <input type="date" name="data_registro" id="data_registro" required>
+      <label for="localizacao">Localização Encontrada:</label>
+      <input type="text" name="localizacao" id="localizacao" placeholder="Rua, Bairro..." required>
 
-        <label for="hp">HP:</label>
-        <input type="number" name="hp" id="hp" required>
+      <label for="data_registro">Data do Registro:</label>
+      <input type="date" name="data_registro" id="data_registro" required>
 
-        <label for="ataque">Ataque:</label>
-        <input type="text" name="ataque" id="ataque" required>
+      <label for="hp">HP:</label>
+      <input type="number" name="hp" id="hp" min="0" placeholder="Quanto de vida o Pokémon possui?" required>
 
-        <label for="defesa">Defesa:</label>
-        <input type="text" name="defesa" id="defesa" required>
+      <label for="ataque">Ataque:</label>
+      <input type="text" name="ataque" id="ataque" placeholder="Quanto de ataque o Pokémon possui?" required>
 
-        <label for="observacoes">Observações:</label>
-        <textarea name="observacoes" id="observacoes" rows="4" placeholder="Comportamento, condição, etc."></textarea>
+      <label for="defesa">Defesa:</label>
+      <input type="text" name="defesa" id="defesa" placeholder="Quanto de defesa o Pokémon possui?" required>
 
-        <button type="submit">Registrar Pokémon</button>
-        </div>
+      <label for="observacoes">Observações:</label>
+      <textarea name="observacoes" id="observacoes" rows="4" placeholder="Comportamento, condição, etc."></textarea>
+
+      <button type="submit">Registrar Pokémon</button>
     </form>
+  </div>
 </body>
 </html>
 
