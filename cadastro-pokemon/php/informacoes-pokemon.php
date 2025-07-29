@@ -4,7 +4,7 @@ include 'conexao.php';
 $termo = "";
 if (isset($_GET['pesquisa'])) {
     $termo = $_GET['pesquisa'];
-    $sql = "SELECT * FROM registro_pokemons WHERE nome_pokemon LIKE ?";
+    $sql = "SELECT * FROM pokemon WHERE nome_pokemon LIKE ?";
     $stmt = $conexao->prepare($sql);
     $busca = "%$termo%";
     $stmt->bind_param("s", $busca);
@@ -21,7 +21,7 @@ $sql = "SELECT * FROM pokemon";
 <head>
     <meta charset="UTF-8">
     <title>Pokémons Encontrados</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style-inform.css">
 </head>
 <body class="body-inform">
     <div class="container">
@@ -35,31 +35,38 @@ $sql = "SELECT * FROM pokemon";
         <?php if ($resultado->num_rows > 0): ?>
             <table>
                 <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Tipo</th>
-                        <th>Localização</th>
-                        <th>Data</th>
-                        <th>HP</th>
-                        <th>Ataque</th>
-                        <th>Defesa</th>
-                        <th>Observações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php while ($row = $resultado->fetch_assoc()): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($row['nome_pokemon']) ?></td>
-                            <td><?= htmlspecialchars($row['tipo_pokemon']) ?></td>
-                            <td><?= htmlspecialchars($row['localizacao_pokemon']) ?></td>
-                            <td><?= date('d/m/Y', strtotime($row['data_registro_pokemon'])) ?></td>
-                            <td><?= $row['hp_pokemon'] ?></td>
-                            <td><?= $row['ataque_pokemon'] ?></td>
-                            <td><?= $row['defesa_pokemon'] ?></td>
-                            <td><?= htmlspecialchars($row['observacao_pokemon']) ?></td>
-                        </tr>
-                    <?php endwhile; ?>
-                </tbody>
+    <tr>
+        <th>Nome</th>
+        <th>Tipo</th>
+        <th>Localização</th>
+        <th>Data</th>
+        <th>HP</th>
+        <th>Ataque</th>
+        <th>Defesa</th>
+        <th>Observações</th>
+        <th>Ações</th>
+    </tr>
+</thead>
+<tbody>
+    <?php while ($row = $resultado->fetch_assoc()): ?>
+        <tr>
+            <td><?= htmlspecialchars($row['nome_pokemon']) ?></td>
+            <td><?= htmlspecialchars($row['tipo_pokemon']) ?></td>
+            <td><?= htmlspecialchars($row['localizacao_pokemon']) ?></td>
+            <td><?= date('d/m/Y', strtotime($row['data_registro_pokemon'])) ?></td>
+            <td><?= $row['hp_pokemon'] ?></td>
+            <td><?= $row['ataque_pokemon'] ?></td>
+            <td><?= $row['defesa_pokemon'] ?></td>
+            <td><?= htmlspecialchars($row['observacao_pokemon']) ?></td>
+            <td>
+    <a href="editar.php?id=<?= $row['id_pokemon'] ?>" class="edit">Editar</a>
+    <a href="excluir.php?id=<?= $row['id_pokemon'] ?>" class="delete" onclick="return confirm('Tem certeza que deseja excluir este Pokémon?')">Excluir</a>
+</td>
+
+        </tr>
+    <?php endwhile; ?>
+</tbody>
+
             </table>
         <?php else: ?>
             <p>Nenhum Pokémon encontrado.</p>

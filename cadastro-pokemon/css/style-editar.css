@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: url('../img/fundo_pokemon.png') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  /* remove align-items: center para evitar corte vertical */
+}
+
+
+.conteudo-principal {
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Centraliza o título e dá cor */
+h1 {
+  color: #fff;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+/* Estilização do formulário com glassmorphism */
+form {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Label */
+form label {
+  font-weight: bold;
+  color: #fff;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+/* Inputs, textarea */
+form input[type="text"],
+form input[type="date"],
+form input[type="number"],
+form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  transition: background 0.3s ease;
+  resize: vertical;
+}
+
+form input[type="text"]:focus,
+form input[type="date"]:focus,
+form input[type="number"]:focus,
+form textarea:focus {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+/* Textarea min height */
+form textarea {
+  min-height: 100px;
+}
+
+/* Botão */
+form button {
+  padding: 12px;
+  background-color: #ffffff33;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+form button:hover {
+  background-color: #ffffff55;
+}
+
