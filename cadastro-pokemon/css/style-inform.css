@@ -105,21 +105,39 @@ a {
   display: inline-block;
 }
 
+/* Botão Editar */
 a.edit {
-  background-color: #3b82f6; 
+  background-color: #3b82f6; /* azul */
   color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 a.edit:hover {
-  background-color: #2563eb; 
+  background-color: #2563eb; /* azul escuro */
+  transform: scale(1.05);
 }
 
-a.delete {
-  background-color: #ef4444;
+/* Botão Excluir (substituindo <a> por <button> com classe .btn-excluir) */
+button.btn-excluir {
+  background-color: #ef4444; /* vermelho */
   color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
   margin-left: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-a.delete:hover {
-  background-color: #b91c1c; 
+button.btn-excluir:hover {
+  background-color: #b91c1c; /* vermelho escuro */
+  transform: scale(1.05);
 }
